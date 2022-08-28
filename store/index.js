@@ -5,10 +5,19 @@ Vue.use(Vuex)
 
 const store  = new Vuex.Store({
 	state:{
-		
+			isLogin:false,
+			userInfo:{}
 	},
 	mutations:{
-		
+		//登录
+		Login(state,res){
+			state.isLogin = true
+			sate.userInfo = res
+			uni.setStorage({
+				key:'userInfo',
+				data: res
+			})
+		}
 	},
 	actions:{
 		

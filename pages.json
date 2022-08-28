@@ -33,6 +33,17 @@
             }
             
         }
+        ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+								"backgroundColor": "#F8F8F8",
+								"navigationBarTextStyle": "black",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

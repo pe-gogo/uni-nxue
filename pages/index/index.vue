@@ -9,11 +9,11 @@
 		</view>
 		<view class="content">
 			<view class="entrance">
-				<view class="item" @tap="takein">
+				<view class="item" @tap="takein()">
 					<image src="/static/images/index/zq.png" class="icon"></image>
 					<view class="title">自取</view>
 				</view>
-				<view class="item" @tap="takeout">
+				<view class="item" @tap="takeout()">
 					<image src="/static/images/index/wm.png" class="icon"></image>
 					<view class="title">外卖</view>
 				</view>
@@ -70,17 +70,22 @@
 </template>
 
 <script>
+	import{mapState} from 'vuex'
 	export default {
 		data() {
 			return {
-				isLogin:{}
 			}
-		},
-		onLoad() {
-			
+		},			
+		computed:{
+			...mapState(['isLogin','userInfo'])
 		},
 		methods: {
 			takeout(){
+					if(!this.isLogin){
+						uni.navigateTo({
+							url: '/pages/login/login'
+						})
+					}
 			}
 		}
 	}

@@ -1,6 +1,8 @@
 <template>
-	<view>
-		
+	<view class="container">
+		<view class="position-relative">
+			
+		</view>
 	</view>
 </template>
 
