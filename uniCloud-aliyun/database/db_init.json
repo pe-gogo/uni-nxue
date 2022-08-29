@@ -1,0 +1,182 @@
+// 在本文件中可配置云数据库初始化，数据格式见：https://uniapp.dcloud.io/uniCloud/cf-database?id=db_init
+
+// 编写完毕后对本文件点右键，可按配置规则创建表和添加数据
+
+{
+	// 用户集合
+	"users": {
+
+	},
+	// 地址集合
+	"addresses": {
+		"data": [{
+				"accept_name": "王大合",
+				"area": "广东省深圳市南山区",
+				"gender": 0,
+				"mobile": "18666600000",
+				"openId": "oULP-0BbORldHum2yCWADW9qSOIE",
+				"store_name": "壹方城店",
+				"street": "合江学院B19E"
+			}, {
+				"accept_name": "天龙人",
+				"area": "广州白云区",
+				"gender": 0,
+				"mobile": "15288888888",
+				"openId": "oULP-0BbORldHum2yCWADW9qSOIE",
+				"store_name": "壹方城店",
+				"street": "白云新城28栋404"
+			}, {
+				"accept_name": "王大大",
+				"area": "广州市天河区",
+				"gender": 1,
+				"mobile": "13588886666",
+				"openId": "oULP-0BbORldHum2yCWADW9qSOIE",
+				"store_name": "壹方城店",
+				"street": "天河花园2B"
+			}]
+	},
+	// 门店集合
+	"stores": {
+		"data": [{
+				"city_name": "深圳市",
+				"is_open": true,
+				"latitude": 22.543392,
+				"longitude": 114.072212,
+				"mobile": "0755-82722513",
+				"name": "卓悦中心ONE AVENUE店",
+				"street": "深圳市福田区海田路与福华一路交汇深圳天元5栋1层N136"
+			}, {
+				"city_name": "深圳市",
+				"is_open": true,
+				"latitude": 22.67527,
+				"longitude": 113.834181,
+				"mobile": "0755-82722513",
+				"name": "宝安益田假日天地店",
+				"street": "深圳市宝安益田假日天地L1-W52-W53号商铺"
+			}, {
+				"city_name": "深圳市",
+				"is_open": true,
+				"latitude": 22.553003,
+				"longitude": 113.887073,
+				"mobile": "0755-82300033",
+				"name": "壹方城店",
+				"street": "广东省深圳市宝安区新湖路新安壹方城B1层017A-019A号"
+			}]
+	},
+	// 分类
+	"category":{
+		"data":[
+			{
+				"goods_type": 1,
+				"icon": "",
+				"name": "奈雪早餐" 
+			}, {
+				"goods_type": 2,
+				"icon": "https://img-shop.qmimg.cn/s23107/2019/04/30/458c5a14fb2f190f96.png?imageView2/0/w/200/h/200",
+				"name": "新品推荐"
+			}, {
+				"goods_type": 3,
+				"icon": "https://img-shop.qmimg.cn/s23107/2019/04/30/458c5a14fb2f190f96.png?imageView2/0/w/200/h/200",
+				"name": "招牌热卖"
+			}
+		]
+	},
+	// 商品
+	"goods" :{
+		"data":[
+			{
+				"goods_type": 1,
+				"price": 18.5,
+				"content": "购买三明治,享早餐指定饮品半价",
+				"name": "奈雪早餐",
+				"images": "https://img-shop.qmimg.cn/s23107/2020/04/19/fda6dd99c83af02353.jpg?imageView2/2/w/400/h/400",
+				"stock": "9999956.00"
+			},{
+				"goods_type": 2,
+				"price": 18,
+				"stock": "10485.00",
+				"name": "脏脏王",
+				"content": "酥软口感,进口奶油搭配特制巧克力内馅",
+				"images": "https://img-shop.qmimg.cn/s23107/2020/04/29/4a62ee45dd527609ed.jpg?imageView2/2/w/400/h/400"
+			},{
+				"goods_type": 2,
+				"price": 18,
+				"stock": "10308.00",
+				"content": "精选北川半兵卫抹茶粉和秘制红豆泥",
+				"name": "抹茶王",
+				"images": "https://img-shop.qmimg.cn/s23107/2020/04/29/99daa7b20061efab10.jpg?imageView2/2/w/400/h/400"
+			},{
+				"goods_type": 2,
+				"content": "饱满大颗的新鲜杨梅,满杯手工去核,搭配茉莉初雪茶底,清爽多汁",
+				"name": "霸气杨梅",
+				"images": "https://img-shop.qmimg.cn/s23107/2020/04/26/559a075d81060b23c7.jpg?imageView2/2/w/400/h/400",
+				"price": 30,
+				"stock": "10308.00"
+			},{
+				"goods_type": 2,
+				"price": 28,
+				"content": "马来西亚D24榴莲王果肉+芒果干，爆浆的榴莲馅，这款是榴莲控的最爱。",
+				"name": "霸气榴莲王",
+				"images": "https://img-shop.qmimg.cn/s23107/2019/04/28/be484557ff7cfa4dba.jpg?imageView2/2/w/400/h/400",
+				"property": [{
+					"is_open_checkbox": false,
+					"values": [{
+						"is_default": 1,
+						"id": 582,
+						"code": "Z5E5E2B483FA903805",
+						"value": "标准冰"
+					}, {
+						"is_default": 0,
+						"id": 583,
+						"code": "Z5E5E2B484016A8529",
+						"value": "去冰"
+					}, {
+						"is_default": 0,
+						"id": 584,
+						"code": "Z5E5E2B48405642832",
+						"value": "热"
+					}, {
+						"is_default": 0,
+						"id": 2544,
+						"code": "Z5E5E2B48409616050",
+						"value": "温"
+					}],
+					"name": "温度",
+			"id": 190
+		}, {
+			"is_open_checkbox": false,
+			"id": 191,
+			"values": [{
+				"is_default": 1,
+				"id": 585,
+				"code": "Z5DD789B45391F4495",
+				"value": "标准糖"
+			}, {
+				"is_default": 0,
+				"id": 586,
+				"code": "Z5DD789B453D023182",
+				"value": "少糖"
+			}, {
+				"is_default": 0,
+				"id": 1959,
+				"code": "Z5DD789B4540531795",
+				"value": "不另外加糖"
+			}],
+			"name": "糖度",
+			"desc": "茶饮含糖量较低，推荐标准做法，口味更佳"
+		}]
+			},{
+				"goods_type": 3,
+				"price": 28,
+				"name": "霸气芝士葡萄",
+				"content": "精选优质巨峰葡萄、手工去皮去籽、加入带兰桂花香，经中度焙火的金观音茶中，搭配轻盈香甜芝士奶盖",
+				"images": "https://img-shop.qmimg.cn/s23107/2020/03/19/a3ee1fa72435259a73.jpg?imageView2/2/w/400/h/400"
+			}
+			
+		]
+	},
+	"orders":{
+		
+	}
+
+}

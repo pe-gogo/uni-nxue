@@ -10,12 +10,12 @@
 		</view>
 		<view class="bottom">
 			<!-- #ifdef H5 -->
-				<button type="primary" size="default" class="login-btn" @tap="login">
+				<button type="primary" size="default" class="login-btn" @tap="loginByWeixin">
 					登录
 				</button>
 			<!-- #endif -->
 			<!-- #ifdef MP-WEIXIN -->
-				<button type="primary" size="default" class="login-btn" open-type="getUserInfo" lang="zh_CN" @getuserinfo="wxLogin">
+				<button type="primary" size="default" class="login-btn" open-type="getUserInfo" lang="zh_CN" @tap="loginByWeixin">
 					<image src="/static/images/mine/wechat.png"></image>
 					微信一键登录
 				</button>
@@ -56,71 +56,71 @@
 	export default {
 		data() {
 			return {
-				
+			
+				userInfo:[]
 			}
 		},
 		methods: {
 				...mapMutations(['Login']),
-				wxLogin(e) {
-				        const that = this;
-				        let userInfo = e.detail.userInfo;
-						uni.showLoading({
-							title: '登录中...'
-						})
-						return new Promise((resolve, reject)=>{
-							uni.login({
-								provider:'weixin',
-								success(login_res) {
-									if (login_res.code) {
-										resolve(login_res.code)
-									} else {
-										reject(new Error('微信登录失败'))
-									}
-								},
-								fail(e) {
-									reject(new Error('微信登录失败'))
-								}
-							})
-						}).then((code)=>{
-							console.log("code:", code)
-							return uniCloud.callFunction({
-								name: 'login',
-								data: {
-									code,
-									userInfo
-								}
-							})
-						}).then((res)=>{
-							uni.hideLoading()
-							console.log(res);
-							if (res.result.status !== 0) {
-								return Promise.reject(new Error(res.result.msg))
+				getWeixinCode() {
+					return new Promise((resolve, reject) => {
+						// #ifdef APP-PLUS
+						weixinAuthService.authorize(function(res) {
+							resolve(res.code)
+						}, function(err) {
+							console.log(err)
+							reject(new Error('微信登录失败'))
+						});
+						// #endif
+						// #ifdef MP-WEIXIN
+						uni.login({
+							provider: 'weixin',
+							success(res) {
+								resolve(res.code)
+							},
+							fail(err) {
+								reject(new Error('微信登录失败'))
 							}
-							console.log(res.result.data)
-							that.Login(res.result.data)
-							uni.setStorage({
-								key:'token',
-								data:res.result.token
-							})
-							uni.showModal({
-								content: '登录成功',
-								showCancel: false
-							})
-							uni.hideLoading()
-							uni.navigateBack()
-						
-						}).catch((err) => {
-							console.log(err);
-							uni.hideLoading()
-							uni.showModal({
-							content: '出现错误，请稍后再试' + err.message,
-							showCancel: false
 						})
+						// #endif
 					})
-				        
-				   }
-			
-			}
+				},
+				
+				loginByWeixin(){
+					//获取用户资料
+					uni.getUserProfile({
+						desc:'获取信息',
+						success: res =>{
+							console.log(res)
+							let nickName = res.userInfo.nickName
+							let avatar = res.userInfo.avatarUrl
+							this.userInfo = res.userInfo
+							this.getWeixinCode().then((code)=>{
+								uniCloud.callFunction({
+									name:'user-center',
+									data:{
+										action: 'loginByWeixin',
+										params:{
+											code,
+											nickName,
+											avatar
+										}
+									}
+								}).then(res=>{
+									uni.setStorageSync('uni_id_token',res.result.token)
+									this.Login(res.result.userInfo)
+									uni.navigateBack({
+									})
+							})
+							})	
+						},
+						fail: res=>{
+							console.log(res)
+							console.log('error')
+						}
+					})
+				}
+			},
 		}
 </script>
 

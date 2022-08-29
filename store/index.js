@@ -12,10 +12,11 @@ const store  = new Vuex.Store({
 		//登录
 		Login(state,res){
 			state.isLogin = true
-			sate.userInfo = res
+			state.userInfo = res
+			console.log(res)
 			uni.setStorage({
 				key:'userInfo',
-				data: res
+				data: res,
 			})
 		}
 	},

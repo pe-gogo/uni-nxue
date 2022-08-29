@@ -1,9 +1,0 @@
-{
-  "name": "login",
-  "dependencies": {
-    "jwt-simple": "^0.5.6"
-  },
-  "extensions": {
-    "uni-cloud-jql": {}
-  }
-}
